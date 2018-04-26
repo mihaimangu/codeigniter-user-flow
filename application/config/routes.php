@@ -49,7 +49,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | Examples: my-controller/index -> my_controller/index
 |   my-controller/my-method -> my_controller/my_method
 */
-$route['default_controller'] = 'general';
+$route['default_controller'] = 'users';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = TRUE;
 
@@ -59,28 +59,6 @@ $route['translate_uri_dashes'] = TRUE;
 | -------------------------------------------------------------------------
 */
 
-
-$route['api'] = 'general';
-//$route['api/menus'] = 'api/menus';
-$route['session'] = 'general/read_session';
-$route['api/cart'] = 'general/cart';
-$route['api/account'] = 'users/my_account';
+$route['api'] = 'users';
 $route['api/user'] = 'users/user';
-$route['api/user/checkmail'] = 'users/checkmail';
-$route['api/products/random/(:num)'] = 'general/random_products/$1';
-$route['api/products/random'] = 'general/random_products';
-$route['api/products/attributes'] = 'general/products_attr';
-$route['api/products/count'] = function(){
-	return 'general/products/' . NULL . '/' . 'true';
-};
-$route['api/products/(:num)'] = 'general/products/$1';
-$route['api/products'] = 'general/products';
-$route['api/test/(:num)'] = 'general/test/$1';
-$route['api/services/(:num)'] = 'general/services/$1';
-$route['api/services'] = 'general/services';
-//$route['api/categrories/random'] = 'api/random_categories';
-$route['api/categories'] = 'general/categories';
-$route['api/geo/ro/county'] = 'general/geo_ro_county';
-$route['api/local'] = 'general/local_user';
-$route['test'] = 'testunit';
-$route['test/raw'] = 'testunit/raw_data';
+//$route['api/menus'] = 'api/menus';
