@@ -57,8 +57,10 @@ class users extends REST_Controller
 			'password' => $password,
 		);
 
-
-		$success = $this->users_model->register_user($user_data);
+        $this->load->model('general_model');
+        
+        $table = 'app_users';
+		$success = $this->general_model->write_general($table,$user_data);
 
 		if($success){
 			$this->response(
