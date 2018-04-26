@@ -1,12 +1,5 @@
 <?php
-if(!file_exists(__DIR__ . '/local_variables.php')){
-	echo 'Go to /application/config/local_variables_sample and copy it into local_variables. <br>';
-	echo 'Enter your configuration there!';
-} else {
-	require(__DIR__ . '/local_variables.php');
-}
 defined('BASEPATH') OR exit('No direct script access allowed');
-
 
 /*
 |--------------------------------------------------------------------------
@@ -30,7 +23,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | a PHP script and you can easily do that on your own.
 |
 */
-$config['base_url'] = $base_url;
+$config['base_url'] = '';
 
 /*
 |--------------------------------------------------------------------------
@@ -70,6 +63,8 @@ $config['uri_protocol']	= 'REQUEST_URI';
 | For more information please see the user guide:
 |
 | https://codeigniter.com/user_guide/general/urls.html
+|
+| Note: This option is ignored for CLI requests.
 */
 $config['url_suffix'] = '';
 
@@ -108,6 +103,17 @@ $config['charset'] = 'UTF-8';
 |
 */
 $config['enable_hooks'] = FALSE;
+
+/*
+|--------------------------------------------------------------------------
+| Enable/Disable System Profling
+|--------------------------------------------------------------------------
+|
+| If you would like to use the 'profiling' feature you must enable it by
+| setting this variable to TRUE (boolean).
+|
+*/
+$config['enable_profiling'] = FALSE;
 
 /*
 |--------------------------------------------------------------------------
@@ -164,6 +170,8 @@ $config['composer_autoload'] = FALSE;
 |
 | DO NOT CHANGE THIS UNLESS YOU FULLY UNDERSTAND THE REPERCUSSIONS!!
 |
+| Note: This option is ignored for CLI requests.
+|
 */
 $config['permitted_uri_chars'] = 'a-z 0-9~%.:_\-';
 
@@ -196,20 +204,6 @@ $config['directory_trigger'] = 'd';
 
 /*
 |--------------------------------------------------------------------------
-| Allow $_GET array
-|--------------------------------------------------------------------------
-|
-| By default CodeIgniter enables access to the $_GET array.  If for some
-| reason you would like to disable it, set 'allow_get_array' to FALSE.
-|
-| WARNING: This feature is DEPRECATED and currently available only
-|          for backwards compatibility purposes!
-|
-*/
-$config['allow_get_array'] = TRUE;
-
-/*
-|--------------------------------------------------------------------------
 | Error Logging Threshold
 |--------------------------------------------------------------------------
 |
@@ -238,7 +232,7 @@ $config['log_threshold'] = 0;
 |--------------------------------------------------------------------------
 |
 | Leave this BLANK unless you would like to set something other than the default
-| application/logs/ directory. Use a full server path with trailing slash.
+| application/logs/ directory. Use a full server path.
 |
 */
 $config['log_path'] = '';
@@ -286,7 +280,7 @@ $config['log_date_format'] = 'Y-m-d H:i:s';
 |--------------------------------------------------------------------------
 |
 | Leave this BLANK unless you would like to set something other than the default
-| application/views/errors/ directory.  Use a full server path with trailing slash.
+| application/views/errors/ directory.  Use a full server path.
 |
 */
 $config['error_views_path'] = '';
@@ -297,7 +291,7 @@ $config['error_views_path'] = '';
 |--------------------------------------------------------------------------
 |
 | Leave this BLANK unless you would like to set something other than the default
-| application/cache/ directory.  Use a full server path with trailing slash.
+| application/cache/ directory.  Use a full server path.
 |
 */
 $config['cache_path'] = '';
@@ -387,7 +381,7 @@ $config['encryption_key'] = '';
 $config['sess_driver'] = 'files';
 $config['sess_cookie_name'] = 'ci_session';
 $config['sess_expiration'] = 7200;
-$config['sess_save_path'] = sys_get_temp_dir();
+$config['sess_save_path'] = NULL;
 $config['sess_match_ip'] = FALSE;
 $config['sess_time_to_update'] = 300;
 $config['sess_regenerate_destroy'] = FALSE;
@@ -412,34 +406,6 @@ $config['cookie_domain']	= '';
 $config['cookie_path']		= '/';
 $config['cookie_secure']	= FALSE;
 $config['cookie_httponly'] 	= FALSE;
-
-/*
-|--------------------------------------------------------------------------
-| Standardize newlines
-|--------------------------------------------------------------------------
-|
-| Determines whether to standardize newline characters in input data,
-| meaning to replace \r\n, \r, \n occurrences with the PHP_EOL value.
-|
-| WARNING: This feature is DEPRECATED and currently available only
-|          for backwards compatibility purposes!
-|
-*/
-$config['standardize_newlines'] = FALSE;
-
-/*
-|--------------------------------------------------------------------------
-| Global XSS Filtering
-|--------------------------------------------------------------------------
-|
-| Determines whether the XSS filter is always active when GET, POST or
-| COOKIE data is encountered
-|
-| WARNING: This feature is DEPRECATED and currently available only
-|          for backwards compatibility purposes!
-|
-*/
-$config['global_xss_filtering'] = FALSE;
 
 /*
 |--------------------------------------------------------------------------
@@ -496,20 +462,6 @@ $config['compress_output'] = FALSE;
 |
 */
 $config['time_reference'] = 'local';
-
-/*
-|--------------------------------------------------------------------------
-| Rewrite PHP Short Tags
-|--------------------------------------------------------------------------
-|
-| If your PHP installation does not have short tag support enabled CI
-| can rewrite the tags on-the-fly, enabling you to utilize that syntax
-| in your view files.  Options are TRUE or FALSE (boolean)
-|
-| Note: You need to have eval() enabled for this to work.
-|
-*/
-$config['rewrite_short_tags'] = FALSE;
 
 /*
 |--------------------------------------------------------------------------

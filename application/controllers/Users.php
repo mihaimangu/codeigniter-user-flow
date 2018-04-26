@@ -17,6 +17,11 @@ class users extends REST_Controller
         
     }
     
+    public function user_post()
+	{
+
+    }
+    
     
 }
 
